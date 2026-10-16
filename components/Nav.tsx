@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 
 const links = [
-  { href: "#work", label: "work" },
   { href: "#approach", label: "approach" },
+  { href: "#work", label: "work" },
   { href: "#stack", label: "stack" },
   { href: "#contact", label: "contact" },
 ];
@@ -73,7 +73,8 @@ export default function Nav() {
               scrolled ? "h-2 w-2" : "h-2.5 w-2.5"
             }`}
           />
-          nirmala.dev
+          Nirmala 
+
         </a>
 
         <div className="flex items-center gap-1 sm:gap-2">
@@ -92,7 +93,7 @@ export default function Nav() {
           <button
             onClick={toggleTheme}
             aria-label="Toggle color theme"
-            className={`grid place-items-center rounded-lg border border-line bg-surface text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-accent ${
+            className={`pulse-btn grid place-items-center rounded-lg border border-line bg-surface text-ink hover:border-accent ${
               scrolled ? "h-9 w-9" : "h-11 w-11"
             }`}
           >

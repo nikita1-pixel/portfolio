@@ -267,7 +267,7 @@ export default async function CaseStudyPage({
                 href={l.href}
                 target={l.external ? "_blank" : undefined}
                 rel={l.external ? "noopener noreferrer" : undefined}
-                className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-5 py-2.5 font-mono text-sm font-semibold transition-colors hover:border-accent hover:text-accent"
+                className="pulse-btn inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-5 py-2.5 font-mono text-sm font-semibold hover:border-accent hover:text-accent"
               >
                 {l.label} <span aria-hidden>{l.external ? "↗" : "→"}</span>
               </a>

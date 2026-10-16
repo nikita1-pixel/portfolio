@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local reference material / unused source image (cutout is committed instead)
+/reference
+/public/Gemini_Generated_Image_2m6p4q2m6p4q2m6p.png

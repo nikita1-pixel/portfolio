@@ -5,6 +5,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import CursorGlow from "@/components/CursorGlow";
+import CursorRing from "@/components/CursorRing";
 
 // runs before the page paints → no white flash for dark-mode visitors
 const noFlashTheme = `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();`;
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <script dangerouslySetInnerHTML={{ __html: noFlashTheme }} />
         <CursorGlow />
+        <CursorRing />
         <SmoothScroll />
         <span id="top" />
         <Nav />

@@ -75,7 +75,7 @@ export default function Hero() {
       {/* subline */}
       <motion.p
         variants={fadeUp}
-        className="mt-8 max-w-xl text-lg leading-relaxed text-ink-soft sm:text-xl"
+        className="mt-6 max-w-xl text-lg leading-relaxed text-ink-soft sm:mt-8 sm:text-xl"
       >
         Full-stack developer who takes an idea all the way to something you can
         open and use —{" "}
@@ -85,13 +85,13 @@ export default function Hero() {
       </motion.p>
 
       {/* CTA buttons — magnetic pull toward the cursor */}
-      <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-3">
+      <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-3 sm:mt-10">
         <Magnetic>
           <a
             href="https://scribeos-five.vercel.app"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3.5 font-mono text-sm font-semibold text-accent-ink transition-transform hover:-translate-y-0.5"
+            className="pulse-btn inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3.5 font-mono text-sm font-semibold text-accent-ink"
           >
             See a live build <span aria-hidden>↗</span>
           </a>
@@ -99,7 +99,7 @@ export default function Hero() {
         <Magnetic>
           <a
             href="#work"
-            className="inline-flex items-center gap-2 rounded-xl border border-line px-6 py-3.5 font-mono text-sm font-semibold text-ink transition-colors hover:border-accent hover:text-accent"
+            className="pulse-btn inline-flex items-center gap-2 rounded-xl border border-line bg-surface px-6 py-3.5 font-mono text-sm font-semibold text-ink hover:border-accent hover:text-accent"
           >
             See the work
           </a>
@@ -109,7 +109,7 @@ export default function Hero() {
       {/* system status strip */}
       <motion.div
         variants={fadeUp}
-        className="mt-16 overflow-hidden rounded-2xl border border-line bg-surface shadow-sm"
+        className="mt-10 overflow-hidden rounded-2xl border border-line bg-surface shadow-sm sm:mt-16"
       >
         <div className="flex items-center gap-2 border-b border-line px-4 py-3 font-mono text-xs text-ink-faint">
           <span className="flex gap-1.5" aria-hidden>
@@ -151,7 +151,7 @@ export default function Hero() {
               Full-stack
             </span>
             <span className="font-mono text-xs text-ink-faint">
-              React · Node · Python
+              JavaScript · React · Node · SQL
             </span>
           </div>
         </div>

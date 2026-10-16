@@ -14,15 +14,15 @@ const deck: DeckCard[] = [
     caseStudy: "scribeos",
   },
   {
-    flag: "Idea → shipped product · loan risk, explained",
-    title: "Loan Default Risk Predictor",
+    flag: "Idea → shipped product · trekking community",
+    title: "Trekus",
     blurb:
-      "A model scores a loan's default risk and explains why in plain English.",
-    image: "/loan.png",
-    ratio: 1.71,
-    url: "loan-default-risk-predictor",
-    tags: ["Python", "scikit-learn", "Streamlit"],
-    caseStudy: "loan-risk-predictor",
+      "A weekend-escape trekking community for the Sahyadris — discover treks, check live weather, book a spot, review, and ask an AI trail guide.",
+    image: "/trekus.png",
+    ratio: 1.93,
+    url: "www.trekus.co",
+    tags: ["React", "TypeScript", "Supabase", "Gemini"],
+    caseStudy: "trekking-platform",
   },
   {
     flag: "Idea → shipped product · civic reporting",
@@ -36,14 +36,15 @@ const deck: DeckCard[] = [
     caseStudy: "city-dashboard",
   },
   {
-    flag: "Idea → shipped product · trekking community",
-    title: "Trekking Community Platform",
-    blurb: "Discover routes and plan treks with a community and an AI trek buddy.",
-    image: "/trekus.png",
-    ratio: 1.93,
-    url: "treks — explore routes",
-    tags: ["React", "Node", "MongoDB", "Serverless"],
-    caseStudy: "trekking-platform",
+    flag: "Idea → shipped product · loan risk, explained",
+    title: "Loan Default Risk Predictor",
+    blurb:
+      "A model scores a loan's default risk and explains why in plain English.",
+    image: "/loan.png",
+    ratio: 1.71,
+    url: "loan-default-risk-predictor",
+    tags: ["Python", "scikit-learn", "Streamlit"],
+    caseStudy: "loan-risk-predictor",
   },
 ];
 
@@ -52,19 +53,19 @@ export default function Projects() {
   return (
     <section
       id="work"
-      className="w-full scroll-mt-20 px-5 py-24 sm:px-8 sm:py-32 lg:px-12"
+      className="w-full scroll-mt-20 px-5 py-8 sm:px-8 sm:py-32 lg:px-12"
     >
-      <div className="mb-12 flex flex-wrap items-baseline justify-between gap-4">
+      <div className="mb-8 flex flex-wrap items-baseline justify-between gap-4 sm:mb-12">
         <div>
           <span className="font-mono text-xs uppercase tracking-widest text-ink-faint">
-            01 — Selected work
+            02 — Selected work
           </span>
           <h2 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-5xl">
             <MaskLine>Things I shipped.</MaskLine>
           </h2>
         </div>
         <span className="font-mono text-sm text-ink-faint">
-          Flip through the deck ↑
+          {deck.length} builds · tap through →
         </span>
       </div>
 
