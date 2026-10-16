@@ -23,8 +23,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Type check
-        run: npx tsc --noEmit
-
+      # next build type-checks the whole project (incl. Next's generated
+      # route types) and compiles it — one step gates both correctness and build.
       - name: Build
         run: npm run build
