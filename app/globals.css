@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+/* ---- our palette: light values (the defaults) ---- */
+:root {
+  --paper: #F5F4F1;
+  --surface: #FBFAF8;
+  --ink: #16181D;
+  --ink-soft: #55585F;
+  --ink-faint: #8A8D94;
+  --line: #E0DFD9;
+  --line-soft: #ECEBE6;
+  --accent: #1B3BFF;
+  --accent-ink: #FFFFFF;
+  --live: #17A66A;
+}
+
+/* ---- dark values: follow the OS setting ---- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0D0E12;
+    --surface: #14161C;
+    --ink: #F1F2F5;
+    --ink-soft: #A2A6AF;
+    --ink-faint: #6A6E78;
+    --line: #23262E;
+    --line-soft: #1B1D24;
+    --accent: #5B74FF;
+    --accent-ink: #0D0E12;
+    --live: #2BD58C;
+  }
+}
+
+/* ---- manual toggle wins over the OS setting (both directions) ---- */
+:root[data-theme="light"] {
+  --paper: #F5F4F1; --surface: #FBFAF8; --ink: #16181D; --ink-soft: #55585F;
+  --ink-faint: #8A8D94; --line: #E0DFD9; --line-soft: #ECEBE6;
+  --accent: #1B3BFF; --accent-ink: #FFFFFF; --live: #17A66A;
+}
+:root[data-theme="dark"] {
+  --paper: #0D0E12; --surface: #14161C; --ink: #F1F2F5; --ink-soft: #A2A6AF;
+  --ink-faint: #6A6E78; --line: #23262E; --line-soft: #1B1D24;
+  --accent: #5B74FF; --accent-ink: #0D0E12; --live: #2BD58C;
+}
+
+/* ---- expose our vars to Tailwind as utility classes ---- */
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-live: var(--live);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+html { scroll-behavior: smooth; }
+
+::selection { background: var(--accent); color: var(--accent-ink); }
+
+/* theme-toggle icon: moon in light, sun in dark — driven purely by data-theme */
+.icon-sun { display: none; }
+.icon-moon { display: block; }
+:root[data-theme="dark"] .icon-sun { display: block; }
+:root[data-theme="dark"] .icon-moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .icon-sun { display: block; }
+  :root:not([data-theme="light"]) .icon-moon { display: none; }
+}
+
+/* cursor-following ambient glow (see components/CursorGlow.tsx) */
+.cursor-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 46rem;
+  height: 46rem;
+  /* shift back by half so translate positions its CENTRE on the cursor */
+  margin-left: -23rem;
+  margin-top: -23rem;
+  border-radius: 9999px;
+  will-change: transform;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 20%, transparent) 0%,
+    color-mix(in srgb, var(--accent) 9%, transparent) 38%,
+    transparent 68%
+  );
+}
+/* a touch stronger in dark mode so it reads against near-black */
+:root[data-theme="dark"] .cursor-glow {
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 28%, transparent) 0%,
+    color-mix(in srgb, var(--accent) 12%, transparent) 38%,
+    transparent 68%
+  );
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .cursor-glow {
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--accent) 28%, transparent) 0%,
+      color-mix(in srgb, var(--accent) 12%, transparent) 38%,
+      transparent 68%
+    );
+  }
+}
+
+/* infinite tech marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 32s linear infinite; }
+.marquee-pause:hover .animate-marquee { animation-play-state: paused; }
+
+/* Lenis smooth-scroll base styles */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  html { scroll-behavior: auto; }
+}
