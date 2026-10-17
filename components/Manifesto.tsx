@@ -1,49 +1,83 @@
 import Reveal from "@/components/Reveal";
 import PortraitTilt from "@/components/PortraitTilt";
 
+/* ---- copy lives in one place; both layouts reference it ---- */
+const eyebrow = (
+  <span className="font-mono text-xs uppercase tracking-widest text-ink-faint">
+    01 — How I work
+  </span>
+);
+
+const heading = (
+  <h2 className="mt-4 max-w-[18ch] text-3xl font-extrabold leading-[1.05] tracking-tight text-balance sm:text-5xl">
+    I build the whole thing. I don&rsquo;t ship{" "}
+    <span className="text-accent">slop</span>.
+  </h2>
+);
+
+const para1 = (
+  <>
+    I take an idea and own it end to end — the architecture, the data model, the
+    trade-offs and the debugging are mine. I reach for whatever gets it built
+    (yes, AI too), but I understand every line that goes to production, because
+    I&rsquo;m the one who deployed it, watched it break, and fixed it live.
+  </>
+);
+
+const para2 = (
+  <>
+    My bar is simple: if I can&rsquo;t give you a link you can click and use
+    right now, it isn&rsquo;t done. Depth over a wall of half-finished repos.
+  </>
+);
+
+const signature = (
+  <div className="mt-8 font-mono text-sm text-ink-faint">
+    — Nirmala, full-stack developer
+  </div>
+);
+
 export default function Manifesto() {
   return (
     <section
       id="approach"
-      className="w-full scroll-mt-20 px-5 py-14 sm:px-8 sm:py-32 lg:px-12"
+      className="w-full scroll-mt-20 px-5 py-14 sm:px-8 sm:py-24 lg:px-12"
     >
       <Reveal>
-        <div>
-          <span className="font-mono text-xs uppercase tracking-widest text-ink-faint">
-            01 — How I work
-          </span>
-          <h2 className="mt-2 text-2xl font-extrabold leading-[1.05] tracking-tight text-balance sm:mt-3 sm:text-5xl">
-            Fresher, yes. But I know what{" "}
-            <span className="text-accent">matters.</span>
-          </h2>
-
-          {/* character floats right — the paragraphs wrap beside it, then run
-              full width again once the text passes the figure */}
-          <div className="float-right mb-2 ml-5 w-36 sm:ml-8 sm:w-56 lg:w-72">
+        {/* ===== DESKTOP / laptop (≥1024px): LOCKED two-column layout ===== */}
+        <div className="hidden lg:grid lg:grid-cols-[1.4fr_1fr] lg:items-center lg:gap-14">
+          <div>
+            {eyebrow}
+            {heading}
+            <p className="mt-7 max-w-[54ch] text-base leading-relaxed text-ink-soft sm:text-lg">
+              {para1}
+            </p>
+            <p className="mt-5 max-w-[54ch] text-base leading-relaxed text-ink-soft sm:text-lg">
+              {para2}
+            </p>
+            {signature}
+          </div>
+          <div className="lg:max-w-none">
             <PortraitTilt />
           </div>
+        </div>
 
-          <p className="mt-4 text-sm leading-relaxed text-ink-soft sm:mt-7 sm:text-lg">
-            I&rsquo;m early in my career, so I won&rsquo;t pretend I&rsquo;ve
-            seen it all. What I bring is judgment about what actually matters:
-            get the data model right, keep the user flow simple, and ship
-            something real instead of polishing a demo. I&rsquo;ll take the
-            boring, reliable option over the clever one.
-          </p>
-          <p className="mt-3 text-sm leading-relaxed text-ink-soft sm:mt-5 sm:text-lg">
-            My approach is build-to-learn — take an idea, cut it down to the
-            smallest version that works, get it running end to end, then make it
-            better. I read the docs, debug patiently, and understand every line
-            I ship, because I&rsquo;m the one who deployed it and fixed it when
-            it broke.
-          </p>
-          <p className="mt-3 text-sm leading-relaxed text-ink-soft sm:mt-5 sm:text-lg">
-            The bar stays the same: if I can&rsquo;t hand you a link you can
-            open and use, it isn&rsquo;t done.
-          </p>
-          <div className="mt-5 font-mono text-xs text-ink-faint sm:mt-8 sm:text-sm">
-            — Nirmala, full-stack developer
+        {/* ===== MOBILE (<1024px): magazine layout — text wraps around the figure ===== */}
+        <div className="lg:hidden">
+          {eyebrow}
+          {heading}
+          {/* the character floats; the paragraphs below flow around it */}
+          <div className="float-right ml-4 mb-2 mt-4 w-36 sm:ml-6 sm:w-52">
+            <PortraitTilt />
           </div>
+          <p className="mt-5 text-base leading-relaxed text-ink-soft sm:text-lg">
+            {para1}
+          </p>
+          <p className="mt-4 text-base leading-relaxed text-ink-soft sm:text-lg">
+            {para2}
+          </p>
+          {/* clear the float so the signature sits on its own line */}
+          <div className="clear-both">{signature}</div>
         </div>
       </Reveal>
     </section>

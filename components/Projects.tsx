@@ -65,7 +65,7 @@ export default function Projects() {
           </h2>
         </div>
         <span className="font-mono text-sm text-ink-faint">
-          {deck.length} builds · tap through →
+          {deck.length} builds · scroll or tap →
         </span>
       </div>
 
